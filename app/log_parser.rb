@@ -24,7 +24,8 @@ class LogParser
   end
 
   def order_urls_by_unique_visits
-    grouped_urls.map { |key, value| [key, value.map(&:ip_address).uniq.count] }.sort
+    grouped_urls.map { |key, value| [key, value.map(&:ip_address).uniq.count] }.
+      sort { |a, b| b.last <=> a.last }
   end
 
   private
