@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require_relative '../app/log_parser'
+
+log_parser = LogParser.new(ARGV[0])
+
+log_parser.parse_log_lines
+
+puts "\n"
+
+log_parser.order_urls_by_visits.each do |url, visits|
+  puts "#{url} #{visits} visits"
+end
+
+puts "\n"
+
+log_parser.order_urls_by_unique_visits.each do |url, visits|
+  puts "#{url} #{visits} unique views"
+end
